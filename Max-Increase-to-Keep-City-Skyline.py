@@ -32,17 +32,12 @@ All heights grid[i][j] are in the range [0, 100].
 All buildings in grid[i][j] occupy the entire grid cell: that is, they are a 1 x 1 x grid[i][j] rectangular prism.
 """
 
-def maxIncreaseKeepingSkyline(self, grid):
-    """
-    :type grid: List[List[int]]
-    :rtype: int
-    """
+def maxIncreaseKeepingSkyline(grid):
+  
+    ### Solution ###
     max_row = list(map(lambda x: max(x), grid))
-
     t_grid = list(zip(*grid))
-
     max_column = list(map(lambda x: max(x), t_grid))
-
     i_index = 0
     sum_list = []
     for i in grid:        
@@ -52,14 +47,14 @@ def maxIncreaseKeepingSkyline(self, grid):
                 sum_list.append(min(max_row[i_index], max_column[j_index])-j)
             else:
                 sum_list.append(0)
-
             j_index += 1
-
         i_index += 1
-
     result = sum(sum_list)
-
     return result
+
+def main():
+    grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
+    print(maxIncreaseKeepingSkyline(grid))
     
 if __name__ == "__main__":
     main()
